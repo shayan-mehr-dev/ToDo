@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 import models, schemas
 from datetime import datetime
+from fastapi import HTTPException
 
 def get_todos(db: Session):
     return db.query(models.Todo).all()
@@ -25,7 +26,7 @@ def update_todo(db: Session, todo_id: int, todo: schemas.TodoUpdate):
 def delete_todo(db: Session, todo_id: int):
     db_todo = db.query(models.Todo).filter(models.Todo.id == todo_id).first()
     if not db_todo:
-        raise Exception("Todo not found")
+        raise HTTPException(status_code=404, detail="Todo not found")
     db.delete(db_todo)
     db.commit()
     return {"detail": "Todo deleted"}

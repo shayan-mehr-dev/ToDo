@@ -4,20 +4,19 @@ from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
 import crud, models, schemas
 from database import SessionLocal, engine
+from routers import todos
 
 # Create database tables
 models.Base.metadata.create_all(bind=engine)
 
-app = FastAPI()
 
-# -------------------- CORS --------------------
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
+app = FastAPI(
+    title="ToDo API",
+    description="A simple ToDo API with full CRUD operations, powered by FastAPI and SQLAlchemy.",
+    version="1.0.0"
 )
 
+app.include_router(todos.router)
 
 
 # -------------------- Dependency --------------------

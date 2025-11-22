@@ -1,9 +1,10 @@
 from pydantic import BaseModel
 from datetime import datetime
+from typing import Optional
 
 class TodoBase(BaseModel):
     title: str
-    description: str | None = None
+    description: Optional[str] = ""
 
 class TodoCreate(TodoBase):
     pass
