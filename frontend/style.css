@@ -1,0 +1,207 @@
+
+/* Body */
+body {
+    font-family: 'Poppins', 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px 10px;
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #5a3a7e, #4b2c6f, #6b3f9f, #532d7a);
+    background-size: 800% 800%;
+    animation: gradientFlow 25s ease infinite;
+    color: #fff;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    filter: blur(40px) brightness(0.9) saturate(1.1);
+    z-index: -1;
+}
+
+/* Gradient Animation */
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Container Glassmorphism */
+.container {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    width: 400px;
+    max-width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Headline */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #d3b3ff;
+    font-family: 'Playfair Display', 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+/* Inputs */
+input, .search-input {
+    margin-bottom: 10px;
+    padding: 12px 15px;
+    width: 100%;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255, 255, 255, 0.25); /* low transparency */
+    font-size: 16px;
+    font-family: 'Poppins', 'Roboto', sans-serif;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+input:focus, .search-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 10px rgba(180,140,255,0.5);
+}
+
+input::placeholder, .search-input::placeholder {
+    color: rgba(211,179,255,0.6);
+    font-style: italic;
+}
+
+input:hover, .search-input:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Buttons */
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #7b4cff, #9b6cff);
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    font-family: 'Poppins', 'Roboto', sans-serif;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(123,76,255,0.3);
+}
+
+/* ---------- Todo List ---------- */
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px;
+    background: rgba(155,127,193,0.18);
+    margin-bottom: 14px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', 'Roboto', sans-serif;
+    color: #fff;
+}
+
+li.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+    background: rgba(160,132,194,0.15);
+}
+
+li:hover {
+    transform: translateX(2px);
+    background: rgba(155,127,193,0.25);
+}
+
+/*  Action Buttons */
+.action-btn {
+    margin-left: 5px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.complete-btn {
+    background: #6bd07a;
+    color: white;
+}
+
+.complete-btn:hover {
+    background: #4fa55a;
+}
+
+.delete-btn {
+    background: #d46a8c;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #a94b63;
+}
+
+.theme-picker select {
+    padding: 5px 8px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+}
+
+/* Responsive  */
+@media (max-width: 480px) {
+    body {
+        padding: 20px 5px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    input, .search-input, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .action-btn {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}

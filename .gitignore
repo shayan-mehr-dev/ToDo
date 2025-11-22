@@ -1,0 +1,37 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.pytest_cache/
+.cache/
+
+# Virtual environment
+venv/
+env/
+.venv/
+ENV/
+
+# SQLite database (ignore ALL db files)
+*.db
+*.sqlite3
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Frontend build
+dist/
+node_modules/
+
+# Environment variables
+.env
+.env.*
