@@ -33,3 +33,7 @@ def delete_todo(todo_id: int, db: Session = Depends(get_db)):
     if not success:
         raise HTTPException(status_code=404, detail="Todo not found")
     return {"detail": f"Todo {todo_id} deleted successfully"}
+
+@router.get("/search", response_model=list[Todo])
+def search_todos(q: str | None, db: Session = Depends(get_db)):
+    return crud.search_todos(db, q)

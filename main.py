@@ -16,8 +16,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
-app.include_router(todos.router)
-
+app.include_router(todos.router, prefix="/todos")
 
 # -------------------- Dependency --------------------
 def get_db():
@@ -45,7 +44,7 @@ def delete_todo(todo_id: int, db: Session = Depends(get_db)):
     return crud.delete_todo(db, todo_id)
 
 @app.get("/todos/search", response_model=list[schemas.Todo])
-def search_todos(q: str, db: Session = Depends(get_db)):
+def search_todos(q: str | None, db: Session = Depends(get_db)):
     return crud.search_todos(db, q)
 
 
